@@ -1,0 +1,29 @@
+[package]
+name = "spawn-lite"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.95"
+description = "Persistent game simulation with an autonomous, sandboxed world builder"
+
+[features]
+default = []
+http = ["dep:axum"]
+
+[dependencies]
+anyhow = "1"
+axum = { version = "0.8", optional = true, features = ["ws"] }
+clap = { version = "4.5", features = ["derive"] }
+dotenvy = "0.15"
+fs2 = "0.4"
+hecs = "0.10"
+rand = "0.8"
+rand_chacha = { version = "0.3", features = ["serde1"] }
+reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls", "stream"] }
+rhai = { version = "1.23", features = ["sync", "serde"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tempfile = "3"
+thiserror = "2"
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "io-std", "io-util", "signal", "sync", "time", "net"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
